@@ -1,9 +1,10 @@
-START:  LD 0100        ; Load N value into AC
+        LD 0100        ; Load N value into AC
         JZ SET_ONE     ; If N is 0, jump to set result to 1
         LV 0001        ; Initialize result with 1
         MM 0102        ; Store initial result
         
-LOOP:   LD 0100           ; Load current N value
+LOOP:   
+        LD 0100           ; Load current N value
         SB 0001         ; Subtract 1 from N
         MM 0000        ; Store N-1 in temporary variable
         LD 0102         ; Load current result
