@@ -17,11 +17,11 @@ LOOP    LD N        ; Carrega N atual
 
 SET_ONE LV ONE      ; Caso especial N=0
         MM RES      ; Define resultado como 1
+        JP HALT     ; Para execução
 
 HALT    HM =0       ; Para execução
 
-; Área de dados
-@ /0100
+@ /102 
 N       K =0        ; N armazenado no endereço 100
 RES     K =1        ; RES armazenado no endereço 102
 TEMP    K =0        ; Variável temporária
