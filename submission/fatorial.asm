@@ -1,22 +1,28 @@
-        LD 0100        ; Load N value into AC
-        JZ SET_ONE     ; If N is 0, jump to set result to 1
-        LV 0001        ; Initialize result with 1
-        MM 0102        ; Store initial result
+@ /0000
+START   LD N        ; Carrega valor de N
+        JZ SET_ONE  ; Se N=0, pula para SET_ONE
+        LV ONE     ; Inicializa resultado com 1
+        MM RES      ; Armazena resultado inicial
         
-LOOP:   
-        LD 0100           ; Load current N value
-        SB 0001         ; Subtract 1 from N
-        MM 0000        ; Store N-1 in temporary variable
-        LD 0102         ; Load current result
-        ML 0100         ; Multiply by current N value
-        MM 0102         ; Update result
-        LD 0000        ; Load N-1 value
-        MM 0100        ; Update N to N-1
-        JZ HALT        ; If N reached 0, halt
-        JP LOOP        ; Continue factorial calculation
+LOOP    LD N        ; Carrega N atual
+        SB ONE     ; Subtrai 1
+        MM TEMP     ; Armazena N-1 temporariamente
+        LD RES      ; Carrega resultado atual
+        ML N        ; Multiplica pelo N atual
+        MM RES      ; Atualiza resultado
+        LD TEMP     ; Carrega N-1
+        MM N        ; Atualiza N
+        JZ HALT     ; Se chegou a 0, finaliza
+        JP LOOP     ; Repete o loop
 
-SET_ONE: 
-        LV 0001        ; Handle special case N=0
-        MM 0102        ; Set result to 1
+SET_ONE LV ONE    ; Caso especial N=0
+        MM RES      ; Define resultado como 1
 
-HALT:   HM             ; Stop execution
+HALT    HM          ; Para execução
+
+; Área de dados
+@ /0100
+N       K =0        ; N armazenado no endereço 100
+RES     K =1        ; RES armazenado no endereço 102
+TEMP    K =0        ; Variável temporária
+ONE     K =1        ; Valor constante 1
