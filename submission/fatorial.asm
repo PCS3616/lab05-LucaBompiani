@@ -1,11 +1,11 @@
 @ /0000
 START   LD N        ; Carrega valor de N
         JZ SET_ONE  ; Se N=0, pula para SET_ONE
-        LV ONE     ; Inicializa resultado com 1
+        LV ONE      ; Inicializa resultado com 1
         MM RES      ; Armazena resultado inicial
         
 LOOP    LD N        ; Carrega N atual
-        SB ONE     ; Subtrai 1
+        SB ONE      ; Subtrai 1
         MM TEMP     ; Armazena N-1 temporariamente
         LD RES      ; Carrega resultado atual
         ML N        ; Multiplica pelo N atual
@@ -15,10 +15,10 @@ LOOP    LD N        ; Carrega N atual
         JZ HALT     ; Se chegou a 0, finaliza
         JP LOOP     ; Repete o loop
 
-SET_ONE LV ONE    ; Caso especial N=0
+SET_ONE LV ONE      ; Caso especial N=0
         MM RES      ; Define resultado como 1
 
-HALT    HM          ; Para execução
+HALT    HM =0       ; Para execução
 
 ; Área de dados
 @ /0100
