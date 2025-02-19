@@ -21,8 +21,6 @@ SET_ONE LV ONE      ; Caso especial N=0
 
 HALT    HM =0       ; Para execução
 
-@ /100 
-N       K =0        ; N armazenado no endereço 100
-RES     K =1        ; RES armazenado no endereço 102
+@ /104
 TEMP    K =0        ; Variável temporária
 ONE     K =1        ; Valor constante 1
